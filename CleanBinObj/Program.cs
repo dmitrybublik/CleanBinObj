@@ -59,8 +59,17 @@ namespace CleanBinObj
                 if (FileNamesAreEqual(name, "bin") || FileNamesAreEqual(name, "obj"))
                 {
                     WriteLine(depth, "Delete folder '{0}'…", folder);
-                    Directory.Delete(folder, true);
-                    WriteLine(depth, "Ok.");
+
+                    try
+                    {
+                        Directory.Delete(folder, true);
+                        WriteLine(depth, "Ok.");
+                    }
+                    catch (UnauthorizedAccessException err)
+                    {
+                        Console.WriteLine("Deleting error: '{0}'", err.Message);
+                    }
+
                     continue;
                 }
                 ProcessPath(folder);
