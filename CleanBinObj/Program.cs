@@ -20,13 +20,7 @@ namespace CleanBinObj
                 return;
             }
 
-            Console.WriteLine("Process path '{0}'?", currentPath);
-            var retVal = Console.ReadKey();
-
-            if (retVal.KeyChar != 'y' && retVal.KeyChar != 'Y')
-            {
-                return;
-            }
+            Console.WriteLine("Clearing '{0}'", currentPath);
 
             Console.WriteLine();
             Console.WriteLine();
